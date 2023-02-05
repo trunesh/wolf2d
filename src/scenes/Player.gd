@@ -3,9 +3,9 @@ extends KinematicBody2D
 
 # Declare member variables here. Examples:
 # var a = 2
-const ACCELERATION=10
-const MAX_SPEED=100
-const FRICTION=10
+const ACCELERATION=500
+const MAX_SPEED=80
+const FRICTION=500
 # var b = "text"
 var velocity = Vector2.ZERO
 
@@ -21,31 +21,13 @@ func _physics_process(delta):
 	
 	
 	if input_vector!=Vector2.ZERO:
-		velocity+=input_vector * ACCELERATION * delta
-		velocity= velocity.clamped(MAX_SPEED * delta)
+		velocity=velocity.move_toward(input_vector*MAX_SPEED,ACCELERATION*delta) 
 	else:
 		#velocity=Vector2.ZERO
 		velocity=velocity.move_toward(Vector2.ZERO,FRICTION*delta)
 	
-	move_and_collide(velocity)
-	"""
-	if Input.is_action_pressed("UpW"):
-		#position.y-=1
-		velocity.y-=1
-	elif Input.is_action_pressed("DownS"):
-		#osition.y+=1
-		velocity.y+=1
-	elif Input.is_action_pressed("leftA"):
-		#position.x-=1
-		velocity.x-=1
-	elif Input.is_action_pressed("rightD"):
-		#position.x+=1
-		velocity.x+=1
-	else:
-		velocity.x=0
-		velocity.y=0
-	move_and_collide(velocity)
-	"""
+	move_and_collide(velocity*delta)
+		
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
