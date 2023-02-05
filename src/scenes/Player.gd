@@ -9,8 +9,11 @@ const FRICTION=500
 # var b = "text"
 var velocity = Vector2.ZERO
 
+var animationPlayer = null
+
 # Called when the node enters the scene tree for the first time.
-func _ready():   
+func _ready():
+	animationPlayer=$AnimationPlayer   
 	pass # Replace with function body.
 
 func _physics_process(delta):
