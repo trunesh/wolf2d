@@ -12,15 +12,16 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("attack"):
-		var GrassEffect = load("res://src/scenes/effects/GrassEffect.tscn")
-		var grassEffect=GrassEffect.instance()
-		var world  = get_tree().current_scene
-		world.add_child(grassEffect) 
-		grassEffect.global_position= global_position
-		queue_free()
+func create_grass_effect():
+	var GrassEffect = load("res://src/scenes/effects/GrassEffect.tscn")
+	var grassEffect=GrassEffect.instance()
+	var world  = get_tree().current_scene
+	world.add_child(grassEffect) 
+	grassEffect.global_position= global_position
+	queue_free()
 
 
 func _on_HurtBox_area_entered(area):
+	create_grass_effect()
+	
 	pass # Replace with function body.

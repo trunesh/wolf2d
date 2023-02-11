@@ -498,8 +498,18 @@ tile_data = PoolIntArray( 6, 0, 0, 7, 0, 1, 8, 0, 1, 9, 0, 1, 10, 0, 1, 11, 0, 2
 [node name="DirtCliffTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 32, 32 )
+collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 6, 0, 0, 7, 0, 1, 8, 0, 1, 9, 0, 2, 65542, 0, 131072, 65543, 0, 131073, 65544, 0, 131073, 65545, 0, 131074, 196610, 0, 0, 196611, 0, 2, 196617, 0, 3, 262144, 0, 0, 262145, 0, 1, 262146, 0, 131078, 262147, 0, 65538, 262153, 0, 131075, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 196613, 327684, 0, 196609, 327685, 0, 196610 )
+
+[node name="Grass" parent="DirtCliffTileMap" instance=ExtResource( 6 )]
+position = Vector2( 20, 112 )
+
+[node name="Grass2" parent="DirtCliffTileMap" instance=ExtResource( 6 )]
+position = Vector2( 65, 123 )
+
+[node name="Grass3" parent="DirtCliffTileMap" instance=ExtResource( 6 )]
+position = Vector2( 55, 120 )
 
 [node name="TextureRectBackground" type="TextureRect" parent="."]
 visible = false
@@ -555,7 +565,3 @@ position = Vector2( 224, 41 )
 
 [node name="Grass8" parent="YSort/Grass" instance=ExtResource( 6 )]
 position = Vector2( 228, 21 )
-
-[node name="HurtBoxes" type="Area2D" parent="."]
-
-[node name="HitBoxes" type="Area2D" parent="."]
