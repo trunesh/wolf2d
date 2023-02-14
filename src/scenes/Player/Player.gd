@@ -3,10 +3,10 @@ extends KinematicBody2D
 
 # Declare member variables here. Examples:
 # var a = 2
-const ACCELERATION=500
-const MAX_SPEED=80
-const ROLL_SPEED = 125
-const FRICTION=500
+export var ACCELERATION=500
+export var MAX_SPEED=80
+export var ROLL_SPEED = 125
+export var FRICTION=500
 # var b = "text"
 enum {
 	MOVE,
