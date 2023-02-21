@@ -7,6 +7,7 @@ export var ACCELERATION=500
 export var MAX_SPEED=80
 export var ROLL_SPEED = 125
 export var FRICTION=500
+
 # var b = "text"
 enum {
 	MOVE,
@@ -16,6 +17,7 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
+var stats = PlayerStats
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -24,6 +26,7 @@ onready var swordHitBox = $"HitBoxPivot/Sword-HitBox"
 # Replace with function body.
 
 func _ready():
+	stats.connect("no_health",self,"queue_free")
 	animationTree.active =true
 	swordHitBox.knockback_vector = roll_vector
 
@@ -86,3 +89,8 @@ func attack_animation_finished():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_HurtBox_area_entered(_area):
+	stats.health-=1
+	print("health:----",stats.health) # Replace with function body.

@@ -14,6 +14,10 @@ config/name="2dRPGWolf"
 run/main_scene="res://src/scenes/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerStats="*res://src/scenes/Player/PlayerStats.tscn"
+
 [display]
 
 window/size/width=320
