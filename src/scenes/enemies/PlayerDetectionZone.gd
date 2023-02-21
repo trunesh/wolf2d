@@ -13,6 +13,6 @@ func _on_PlayerDetectionZone_body_entered(body):
 	pass # Replace with function body.
 
 
-func _on_PlayerDetectionZone_body_exited(body):
+func _on_PlayerDetectionZone_body_exited(_body):
 	player = null
-	pass # Replace with function body.
+	

@@ -23,6 +23,8 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitBox = $"HitBoxPivot/Sword-HitBox"
+onready var hurtBox = $HurtBox
+
 # Replace with function body.
 
 func _ready():
@@ -70,12 +72,12 @@ func move_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state=ATTACK
 		
-func roll_state(delta):
+func roll_state(_delta):
 	velocity = roll_vector * ROLL_SPEED
 	animationState.travel("Roll")	
 	velocity=move_and_slide(velocity)
 
-func attack_state(delta):
+func attack_state(_delta):
 	animationState.travel("Attack")
 	pass	 
 
@@ -94,3 +96,5 @@ func attack_animation_finished():
 func _on_HurtBox_area_entered(_area):
 	stats.health-=1
 	print("health:----",stats.health) # Replace with function body.
+	hurtBox.start_invincibility(0.5)
+	hurtBox.create_hit_effect()
