@@ -487,16 +487,23 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="World" type="Node2D"]
 
 [node name="background" type="Sprite" parent="."]
+position = Vector2( 110, 64 )
+scale = Vector2( 2.02757, 2.00937 )
 texture = ExtResource( 3 )
-centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 320, 180 )
+region_rect = Rect2( -80, 0, 272, 160 )
 
 [node name="DirtPathTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 6, 0, 0, 7, 0, 1, 8, 0, 1, 9, 0, 1, 10, 0, 1, 11, 0, 2, 65542, 0, 131072, 65543, 0, 65542, 65544, 0, 65537, 65545, 0, 65537, 65546, 0, 65537, 65547, 0, 65538, 131079, 0, 65536, 131080, 0, 65537, 131081, 0, 65537, 131082, 0, 65537, 131083, 0, 65538, 196608, 0, 0, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 2, 196615, 0, 65536, 196616, 0, 65537, 196617, 0, 65541, 196618, 0, 131073, 196619, 0, 196613, 196620, 0, 196609, 196621, 0, 196610, 262144, 0, 131072, 262145, 0, 131073, 262146, 0, 131073, 262147, 0, 131073, 262148, 0, 9, 262149, 0, 1, 262150, 0, 1, 262151, 0, 131078, 262152, 0, 65537, 262153, 0, 65538, 327684, 0, 131072, 327685, 0, 131073, 327686, 0, 131073, 327687, 0, 131073, 327688, 0, 65542, 327689, 0, 65538, 393224, 0, 65536, 393225, 0, 131077, 393226, 0, 1, 393227, 0, 1, 393228, 0, 1, 393229, 0, 1, 393230, 0, 2, 458760, 0, 65536, 458761, 0, 65537, 458762, 0, 65537, 458763, 0, 65537, 458764, 0, 65537, 458765, 0, 65537, 458766, 0, 65538, 524296, 0, 65536, 524297, 0, 65537, 524298, 0, 65537, 524299, 0, 65537, 524300, 0, 65537, 524301, 0, 65537, 524302, 0, 65538, 589832, 0, 131072, 589833, 0, 131073, 589834, 0, 131073, 589835, 0, 131073, 589836, 0, 65542, 589837, 0, 65537, 589838, 0, 65538, 655372, 0, 131072, 655373, 0, 131073, 655374, 0, 131074, 720902, 0, 196611 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 34, 66 )
+current = true
+process_mode = 0
+smoothing_enabled = true
 
 [node name="DirtCliffTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -528,6 +535,9 @@ position = Vector2( 34, 66 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -583,4 +593,6 @@ position = Vector2( 149, 128 )
 [node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 122, 76 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 8 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
