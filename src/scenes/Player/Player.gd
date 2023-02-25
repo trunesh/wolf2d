@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+const PlayerHurtSound = preload("res://src/scenes/Player/PlayerHurtSound.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 export var ACCELERATION=500
@@ -24,7 +24,7 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitBox = $"HitBoxPivot/Sword-HitBox"
 onready var hurtBox = $HurtBox
-
+onready var blinkAnimationPlayer  = $BlinkAnimationPlayer
 # Replace with function body.
 
 func _ready():
@@ -94,8 +94,20 @@ func attack_animation_finished():
 #	pass
 
 
-func _on_HurtBox_area_entered(_area):
-	stats.health-=1
+func _on_HurtBox_area_entered(area):
+	stats.health-=area.damage
 	print("health:----",stats.health) # Replace with function body.
 	hurtBox.start_invincibility(0.5)
 	hurtBox.create_hit_effect()
+	var playerHurtSound = PlayerHurtSound.instance()
+	get_tree().current_scene.add_child(playerHurtSound)
+	
+
+
+func _on_HurtBox_invincibility_started():
+	blinkAnimationPlayer.play("Start")
+	
+
+
+func _on_HurtBox_invincibility_ended():
+	blinkAnimationPlayer.play("stop")
