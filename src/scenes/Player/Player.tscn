@@ -785,8 +785,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=52]
@@ -834,7 +834,7 @@ material = SubResource( 51 )
 position = Vector2( 0, -9 )
 texture = ExtResource( 4 )
 hframes = 60
-frame = 18
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -882,6 +882,7 @@ script = ExtResource( 1 )
 
 [node name="CollisionShape2D" parent="HitBoxPivot/Sword-HitBox" index="0"]
 shape = SubResource( 38 )
+disabled = false
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 collision_layer = 4
@@ -893,6 +894,7 @@ shape = SubResource( 50 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
 anims/RESET = SubResource( 54 )
 anims/Start = SubResource( 52 )
 anims/stop = SubResource( 53 )

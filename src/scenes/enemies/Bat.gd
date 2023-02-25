@@ -25,6 +25,8 @@ onready var wanderController = $WanderController
 onready var animationPlayer = $AnimationPlayer
 
 func _ready():
+	randomize()
+	sprite.frame = rand_range(0, 4)
 	state= pick_random_state([IDLE, WANDER])
 	
 	 

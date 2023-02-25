@@ -52,7 +52,7 @@ radius = 7.0
 height = 8.0
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 33.0151
+radius = 55.0364
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 4.0
@@ -115,7 +115,7 @@ script = ExtResource( 4 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = SubResource( 12 )
 frames = SubResource( 6 )
-frame = 1
+frame = 4
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -137,7 +137,6 @@ shape = SubResource( 8 )
 max_health = 2
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.380392 )
